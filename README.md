@@ -94,7 +94,7 @@ yarn start
 - `ANDROID_HOME` or `PATH` environment variables are not set correctly
 - Terminal does not recognize Android environment variables
 
-**Solution:**
+**Solution:** Config environment variables:
 
 1. Check Android SDK location and adb device availability
 
@@ -162,3 +162,85 @@ yarn add -D eslint prettier @typescript-eslint/parser @typescript-eslint/eslint-
   yarn lint:fix
   yarn format
 ```
+
+# Structure:
+
+```bash
+src
+ ┣ assets
+ ┃ ┗ images
+ ┃ ┃ ┗ logo.png
+ ┣ components
+ ┃ ┣ EmptyState.tsx
+ ┃ ┣ FilterTabs.tsx
+ ┃ ┣ SearchBar.tsx
+ ┃ ┣ TodoInput.tsx
+ ┃ ┗ TodoItem.tsx
+ ┣ const
+ ┃ ┗ utils.ts
+ ┣ screens
+ ┃ ┗ HomeScreen.tsx
+ ┣ store
+ ┃ ┣ hooks.ts
+ ┃ ┣ store.ts
+ ┃ ┗ todoSlice.ts
+ ┗ types
+ ┃ ┗ todo.ts
+```
+
+- assets/ : các tài nguyên tĩnh như ảnh, icon, fonts,...
+- component/ : chứa UI components độc lập, có thể tái sử dụng trong toàn app.
+- const/ : hằng số hoặc function(utils) dùng chung, tránh lặp lại logic ở nhiều nơi.
+- screens/ : UI các screen của app (HomeScreen)
+- store/: quản lý global state (dùng Redux Toolkit.) :
+  - store.ts: tạo store chính (configureStore của Redux Toolkit).
+  - todoSlice.ts: chứa logic cho danh sách todo (state + reducers + actions).
+  - hooks.ts : custom hooks giúp type safety, gọn code
+- types/ : định nghĩa type, interface, enum
+
+# Coding Standard:
+
+General
+
+- Hạn chế để lại các import, variable không sử dụng trong file.
+- Sử dụng const và let.
+- Đặt tên, comment có ý nghĩa.
+- Sử dụng Functional Component thay vì Class Component
+- No any type
+- Tách logic ra khỏi UI (sử dụng hooks hoặc helper functions nếu cần)
+- nguyên tắc Single Responsibility Principle (SRP) — mỗi component/hàm nên chỉ có 1 nhiệm vụ rõ ràng.
+
+Naming convention:
+
+- Đặt tên rõ ràng, có ngữ nghĩa. Tránh viết tắt trừ khi là ký hiệu quen thuộc (như id, url)
+- PascalCase: component/interface/type/enum/type
+- camelCase: variable/parameter/function/method
+- CONSTANT_CASE: global_constant/enum_member
+
+Import:
+
+- Ưu tiên sử dụng absolute path
+- Sử dụng relative path trong case file ở cùng thư mục.
+
+Style:
+
+- Ưu tiên sử dụng base style.
+- Tránh sử dụng inline style, ưu tiên sử dụng StyleSheet.
+
+File & Folder Structure:
+
+- tổ chức có thể bảo trì, dễ đọc và có khả năng mở rộng.
+
+Code Formatting:
+
+- Config Prettier và ESLint để tự động format.
+
+# React Native Best Practices
+
+- Khả năng mở rộng
+- Tính nhất quán
+- Dễ bảo trì
+- Dễ đọc
+
+1. Folder structure: tùy theo yêu cầu kiến trúc cụ thể cho lĩnh vực hoặc tính năng.
+
