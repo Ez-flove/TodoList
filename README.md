@@ -203,7 +203,7 @@ src
 General
 
 - Hạn chế để lại các import, variable không sử dụng trong file.
-- Sử dụng const và let.
+- Sử dụng const và let, hạn chế sử dụng var
 - Đặt tên, comment có ý nghĩa.
 - Sử dụng Functional Component thay vì Class Component
 - No any type
@@ -235,12 +235,79 @@ Code Formatting:
 
 - Config Prettier và ESLint để tự động format.
 
-# React Native Best Practices
+# React Native Best Practices:
 
 - Khả năng mở rộng
 - Tính nhất quán
 - Dễ bảo trì
 - Dễ đọc
 
-1. Folder structure: tùy theo yêu cầu kiến trúc cụ thể cho lĩnh vực hoặc tính năng.
+1. Folder structure: 
+   - Tùy theo yêu cầu kiến trúc cụ thể cho lĩnh vực hoặc tính năng
+
+2. Performance Optimization:
+   - Sử dụng React.memo() cho components không cần re-render thường xuyên
+   - Tránh inline styles trong render method
+   - Sử dụng useMemo và useCallback để tối ưu performance
+   - Lazy loading components và images
+   - Sử dụng FlatList thay vì ScrollView cho danh sách dài
+
+3. State Management:
+   - Sử dụng Redux Toolkit cho global state
+   - Local state nên sử dụng useState hook
+   - Tránh prop drilling bằng cách sử dụng Context API hoặc Redux
+
+4. Components:
+   - Chia nhỏ components theo nguyên tắc Single Responsibility
+   - Sử dụng React.memo() cho các component pure
+   - Tránh nested ternary operators
+   - Sử dụng TypeScript để type checking
+
+5. Navigation:
+   - Sử dụng React Navigation
+   - Tổ chức navigation theo stack/tab rõ ràng
+   - Tránh deep nesting navigation
+   - Xử lý navigation params type-safe
+
+6. Error Handling:
+   - Logging errors đầy đủ
+   - Hiển thị user-friendly error messages
+
+7. Assets Management:
+   - Tối ưu kích thước images
+   - Sử dụng proper image formats (webp, png)
+   - Lazy load không cần thiết assets
+
+8. Security:
+   - Input validation
+   - API security
+
+9. Styling Best Practices:
+    - Sử dụng StyleSheet.create:
+    - Tách styles ra file riêng cho components lớn
+    - Sử dụng theme system cho colors, spacing, typography
+    - Tránh magic numbers, sử dụng constants
+    - Tổ chức styles theo logical groups
+    - Tránh position: absolute khi không cần thiết
+    - Sử dụng scale factor cho responsive font sizes
+
+12. Props Best Practices:
+    - TypeScript interface cho props
+    - Props spreading hạn chế:
+      ```typescript
+      // Không nên
+      <Component {...props} />
+      // Nên
+      <Component
+        title={props.title}
+        onPress={props.onPress}
+      />
+      ```
+    - Props validation với TypeScript/PropTypes
+    - Destructure props ở đầu component
+    - Required vs Optional props rõ ràng
+    - Memoize callback props với useCallback
+    - Linting (ESLint)
+    - Code formatting (Prettier)
+    - Documentation
 
