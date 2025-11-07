@@ -84,17 +84,7 @@ yarn start
 # Press 'a' to open Android emulator
 ```
 
-### 4.4. Troubleshooting (Optional)
-
-**Error:** Failed to resolve the Android SDK path or `spawn adb ENOENT`
-
-**Possible causes:**
-
-- Android SDK is not installed
-- `ANDROID_HOME` or `PATH` environment variables are not set correctly
-- Terminal does not recognize Android environment variables
-
-**Solution:** Config environment variables:
+### 4.4. Config environment variables (Optional)
 
 1. Check Android SDK location and adb device availability
 
@@ -242,7 +232,7 @@ Code Formatting:
 - Dễ bảo trì
 - Dễ đọc
 
-1. Folder structure: 
+1. Folder structure:
    - Tùy theo yêu cầu kiến trúc cụ thể cho lĩnh vực hoặc tính năng
 
 2. Performance Optimization:
@@ -283,21 +273,21 @@ Code Formatting:
    - API security
 
 9. Styling Best Practices:
-    - Sử dụng StyleSheet.create:
-    - Tách styles ra file riêng cho components lớn
-    - Sử dụng theme system cho colors, spacing, typography
-    - Tránh magic numbers, sử dụng constants
-    - Tổ chức styles theo logical groups
-    - Tránh position: absolute khi không cần thiết
-    - Sử dụng scale factor cho responsive font sizes
+   - Sử dụng StyleSheet.create:
+   - Tách styles ra file riêng cho components lớn
+   - Sử dụng theme system cho colors, spacing, typography
+   - Tránh magic numbers, sử dụng constants
+   - Tổ chức styles theo logical groups
+   - Tránh position: absolute khi không cần thiết
+   - Sử dụng scale factor cho responsive font sizes
 
-12. Props Best Practices:
+10. Props Best Practices:
     - TypeScript interface cho props
     - Props spreading hạn chế:
       ```typescript
-      // Không nên
+      // No
       <Component {...props} />
-      // Nên
+      // Yes
       <Component
         title={props.title}
         onPress={props.onPress}
@@ -311,3 +301,13 @@ Code Formatting:
     - Code formatting (Prettier)
     - Documentation
 
+# Build app:
+
+- Sử dụng EAS build project expo
+- Set up theo các bước ở [https://docs.expo.dev/build/setup/]
+  - Chạy eas build:configure để khởi tạo file config eas.json
+  - Build app:
+    - ```bash eas build --platform <ios hoặc android> --profile```
+    - Thêm ```--profile  <enviroment>``` để build các môi trường (development | preview | production)
+
+- install app qua file apk
