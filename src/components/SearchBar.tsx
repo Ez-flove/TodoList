@@ -6,7 +6,7 @@ import { ICON_COLOR } from '../const/utils'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { setSearchQuery } from '../store/todoSlice'
 
-const SearchBar: React.FC = () => {
+const SearchBar = () => {
   const searchQuery = useAppSelector(state => state.todos.searchQuery)
   const dispatch = useAppDispatch()
 
